@@ -34,9 +34,9 @@ message = {message}
     # Get user input for each configuration value
     id = input("Your Telegram API id: ")
     hash = input("Your Telegram API hash: ")
-    channel = input("Channel you want to monitor: ")
-    include = input("Keyword you want to include in recieved channel message: ")
-    exclude = input("Keyword you want to exclude in recieved channel message: ")
+    channel = input("Paste the URL of the channel you want to monitor: ")
+    include = input("Keyword you want to include in the recieved channel message: ")
+    exclude = input("Keyword you want to exclude in the recieved channel message: ")
     sid = input("Your Twilio account SID: ")
     token = input("Your Twilio account token: ")
     twilioNo = input("Your Twilio account number: ")

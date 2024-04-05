@@ -1,0 +1,111 @@
+#+TITLE: Telethon-channel-twilio-alert
+#+AUTHOR: Arbab Khan   
+#+EMAIL: arbabashruff@gmail.com
+#+DESCRIPTION: Listen to channel messages using the telethon python library and alert the user using the twilio library.
+
+Listen to channel messages using the telethon python library and alert the user using the twilio library. 
+
+* Table of Contents
+:PROPERTIES:
+:TOC:      :include all :ignore this
+:END:
+:CONTENTS:
+- [[#about][About]]
+- [[#requirements][Requirements]]
+  - [[#telegram-api-token][Telegram API Token]]
+    - [[#obtaining-api-tokens-for-telegram-account][Obtaining API Tokens for Telegram Account]]
+  - [[#obtaining-api-tokens-for-twilio-account][Obtaining API Tokens for Twilio Account]]
+  - [[#what-to-install][What To Install]]
+- [[#setup][Setup]]
+- [[#first-run][First Run]]
+- [[#contributions][Contributions]]
+:END:
+
+* About
+:PROPERTIES:
+:CUSTOM_ID: about
+:END:
+This script utilizes the [[https://docs.telethon.dev/en/stable/][Telethon]] and [[https://www.twilio.com/docs/libraries/reference/twilio-python/index.html][Twilio]] Python libraries to monitor messages on a designated channel. When a message containing a specified keyword is detected, it triggers an SMS notification.
+
+* Requirements
+:PROPERTIES:
+:CUSTOM_ID: requirements
+:END:
+** Telegram API Token
+:PROPERTIES:
+:CUSTOM_ID: telegram-api-token
+:END:
+*** Obtaining API Tokens for Telegram Account
+:PROPERTIES:
+:CUSTOM_ID: obtaining-api-tokens-for-telegram-account
+:END:
+***** Create a Telegram application:
+:PROPERTIES:
+:TOC:      :ignore this
+:CUSTOM_ID: create-a-telegram-application
+:END:
+   - Go to the [[https://my.telegram.org/auth][Telegram website]] and log in with your Telegram account.
+   - Once logged in, go to the [[https://my.telegram.org/auth][API development tools]] page.
+   - Fill out the required fields (name, description, etc.) to create a new application.
+***** Obtain your API credentials:
+:PROPERTIES:
+:TOC:      :ignore this
+:CUSTOM_ID: obtain-your-api-credentials
+:END:
+   - After creating the application, you'll receive an `api_id` and `api_hash`. These are your credentials to access the Telegram API.
+** Obtaining API Tokens for Twilio Account
+:PROPERTIES:
+:CUSTOM_ID: obtaining-api-tokens-for-twilio-account
+:END:
+*** Sign up or log in to Twilio:
+:PROPERTIES:
+:TOC:      :ignore this
+:CUSTOM_ID: sign-up-or-log-in-to-twilio
+:END:
+   - If you don't have a Twilio account yet, sign up for one at [[https://www.twilio.com/try-twilio][Twilio's website]].
+   - If you already have an account, log in using your credentials.
+
+*** Navigate to the Console:
+:PROPERTIES:
+:TOC:      :ignore this
+:CUSTOM_ID: navigate-to-the-console
+:END:
+   - Once logged in, go to the Twilio Console by clicking on the Console link at the top right corner of the page.
+
+*** Access API credentials:
+:PROPERTIES:
+:TOC:      :ignore this
+:CUSTOM_ID: access-api-credentials
+:END:
+   - From the Twilio Console, copy the `Account SID` , `Auth Token` and `My Twilio phone number`. These are the credentials required for our script.
+
+** What To Install
+:PROPERTIES:
+:CUSTOM_ID: what-to-install
+:END:
+- [[https://python-poetry.org/docs/#installation][Poetry]]     
+
+* Setup
+:PROPERTIES:
+:CUSTOM_ID: setup
+:END:
+- Clone the script on your local machin
+  =git clone https://github.com/Strix007/telethon-channel-twilio-alert.git=
+- CD into the directory
+    =cd telethon-channel-twilio-alert=
+- Run Poetry
+      =poetry install=
+- Run the script
+  =python3 listener.py=
+
+* First Run
+:PROPERTIES:
+:CUSTOM_ID: first-run
+:END:
+Upon the initial execution, the script will prompt you to provide details such as your Telegram phone number, which will trigger the delivery of a one-time password (OTP). Subsequently, you'll be asked to input credentials for both the Telegram and Twilio APIs, along with additional information like preferred keywords for inclusion/exclusion, the designated alert recipient's number, and the accompanying message. These prompts only occur during the first run of the script; subsequent executions won't require you to provide these details again.
+
+* Contributions
+:PROPERTIES:
+:CUSTOM_ID: contributions
+:END:
+Contributions such as PRs and Issues are awlays welcome and highly encouraged.
