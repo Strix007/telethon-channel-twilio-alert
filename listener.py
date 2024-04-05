@@ -1,14 +1,58 @@
 #!/usr/bin/env python
 
 # Imports
+import os
+import signal
 from telethon import TelegramClient, events
 from configparser import ConfigParser
 from twilio.rest import Client
 
 # Remove Traceback on KeyboardInterrupt
-import signal
-import os
 signal.signal(signal.SIGINT, lambda x, y: os._exit(0))
+
+# Prompts user for config input if file doesn't exist; otherwise, skips input and informs user.
+cfg_file_path = "config.cfg"
+# Check if the configuration file exists
+if not os.path.exists(cfg_file_path):
+    # Define the template configuration file content with placeholders
+    cfg_template = """
+[telethon]
+id = {id}
+hash = {hash}
+channel = {channel}
+include = {include}
+exclude = {exclude}
+
+[twilio]
+SID = {sid}
+token = {token}
+twilioNo = {twilioNo}
+send = {send}
+message = {message}
+    """
+
+    # Get user input for each configuration value
+    id = input("Your Telegram API id: ")
+    hash = input("Your Telegram API hash: ")
+    channel = input("Channel you want to monitor: ")
+    include = input("Keyword you want to include in recieved channel message: ")
+    exclude = input("Keyword you want to exclude in recieved channel message: ")
+    sid = input("Your Twilio account SID: ")
+    token = input("Your Twilio account token: ")
+    twilioNo = input("Your Twilio account number: ")
+    send = input("The number you want to send the message to with the country code: ")
+    message = input("The message you want to send: ")
+
+    # Replace placeholders in the template with user input
+    cfg_content = cfg_template.format(id=id, hash=hash, channel=channel, include=include, exclude=exclude, sid=sid, token=token, twilioNo=twilioNo, send=send,message=message)
+
+    # Write the configuration content to a cfg file
+    with open("config.cfg", "w") as cfg_file:
+        cfg_file.write(cfg_content)
+
+    print("Configuration saved to 'config.cfg'")
+else:
+    print("Configuration file already exists. Skipping input prompts.")
 
 # Parse config from config.cfg
 config = ConfigParser()
