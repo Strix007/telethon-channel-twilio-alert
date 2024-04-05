@@ -3,6 +3,7 @@
 # Imports
 import os
 import signal
+from loguru import logger
 from telethon import TelegramClient, events
 from configparser import ConfigParser
 from twilio.rest import Client
@@ -14,6 +15,7 @@ signal.signal(signal.SIGINT, lambda x, y: os._exit(0))
 cfg_file_path = "config.cfg"
 # Check if the configuration file exists
 if not os.path.exists(cfg_file_path):
+    logger.info("Configuration file does not exist: %s" % cfg_file_path)
     # Define the template configuration file content with placeholders
     cfg_template = """
 [telethon]
@@ -50,13 +52,14 @@ message = {message}
     with open("config.cfg", "w") as cfg_file:
         cfg_file.write(cfg_content)
 
-    print("Configuration saved to 'config.cfg'")
+    logger.info("Configuration saved to 'config.cfg'")
 else:
-    print("Configuration file already exists. Skipping input prompts.")
+    logger.info("Configuration file already exists. Skipping input prompts.")
 
 # Parse config from config.cfg
 config = ConfigParser()
 config.read('config.cfg')
+logger.info("Reading configuration file 'config.cfg")
 
 # Get user-specific variables from config.cfg
 # Telegram
@@ -86,13 +89,15 @@ async def handle_new_message(event):
     message_text = event.message.text.lower()
     # Filter message accounting to keywords
     if keyword_include in message_text and keyword_exclude not in message_text:
-        print(event.message.text)
+        logger.info("Message recieved: %s" % event.message.text)
+        logger.info(event.message.text)
         # Send a message to your phone number with the message recieved
         twilioClient.messages.create(
             body = messageSent + " " + event.message.text,
             from_=twilioPh,
             to=sendTo
         )
+        logger.info("Message sent: %s" % event.message.text)
 
 # Run the client
 async def main():
