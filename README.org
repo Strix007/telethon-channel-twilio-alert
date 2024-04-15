@@ -105,7 +105,7 @@ This script utilizes the [[https://docs.telethon.dev/en/stable/][Telethon]] and 
       =poetry install=
 - Run the script
   
-  =python3 listener.py=
+  =poetry python3 listener.py=
 
 * First Run
 :PROPERTIES:
