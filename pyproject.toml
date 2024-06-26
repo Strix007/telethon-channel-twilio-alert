@@ -4,14 +4,14 @@ version = "0.1.1"
 description = "Listen to channel messages using the telethon python library and alert the user using the twilio library"
 authors = ["Arbab Khan <arbabashruff@gmail.com>"]
 license = "GPL-3.0"
-readme = "README.md"
+readme = "README.org"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.11"
 telethon = "^1.34.0"
 twilio = "^9.0.4"
 loguru = "^0.7.2"
-
 
 [build-system]
 requires = ["poetry-core"]
