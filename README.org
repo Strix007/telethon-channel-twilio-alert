@@ -105,7 +105,7 @@ This script utilizes the [[https://docs.telethon.dev/en/stable/][Telethon]] and 
       =poetry install=
 - Run the script
   
-  =poetry python run listener.py=
+  =poetry run python listener.py=
 
 * First Run
 :PROPERTIES:
@@ -117,4 +117,4 @@ Upon the initial execution, the script will prompt you to provide details such a
 :PROPERTIES:
 :CUSTOM_ID: contributions
 :END:
-Contributions such as PRs and Issues are awlays welcome and highly encouraged.
+Contributions such as PRs and Issues are always welcome and highly encouraged.
